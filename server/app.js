@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080;
-const Book = require("./models/books");
+const cors = require("cors");
 require("dotenv").config();
 
 app.use(express.json());
+app.use(cors());
 
 const mongoose = require("mongoose");
 
