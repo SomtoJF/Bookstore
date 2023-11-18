@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Createbook from "../pages/Createbook";
-import Showbook from "../pages/Showbook";
-import Editbook from "../pages/Editbook";
-import Deletebook from "../pages/Deletebook";
+import Home from "./pages/Home.tsx";
+import Createbook from "../src/pages/Createbook";
+import Showbook from "./pages/Showbook";
+import Editbook from "./pages/Editbook";
+import Deletebook from "./pages/Deletebook";
 
 export default function App() {
 	return (
