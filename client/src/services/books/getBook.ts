@@ -1,5 +1,5 @@
 import axios from "axios";
-const BACKEND_URL = "http://localhost:8080/";
+import { BACKEND_URL } from "../../../config";
 
 export default async function getBook(id: string | undefined) {
 	try {
