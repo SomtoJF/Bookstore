@@ -35,7 +35,11 @@ export default function Createbook() {
 			{loading ? <Spinner /> : null}
 			<div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
 				<div className="my-4">
-					<form action="" className="flex flex-col gap-2">
+					<form
+						action=""
+						className="flex flex-col gap-2"
+						onSubmit={handleSubmit}
+					>
 						<label htmlFor="title" className="text-xl mr-4 text-gray-500">
 							Title
 						</label>
@@ -45,6 +49,7 @@ export default function Createbook() {
 							id="title"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
+							required
 							className="border-2 border-gray-500 px-4 py-2 w-full"
 						/>
 
@@ -57,6 +62,7 @@ export default function Createbook() {
 							id="author"
 							value={author}
 							onChange={(e) => setAuthor(e.target.value)}
+							required
 							className="border-2 border-gray-500 px-4 py-2 w-full"
 						/>
 
@@ -69,13 +75,10 @@ export default function Createbook() {
 							id="publishYear"
 							value={publishYear}
 							onChange={(e) => setPublishYear(e.target.value)}
+							required
 							className="border-2 border-gray-500 px-4 py-2 w-full"
 						/>
-						<button
-							type="submit"
-							onClick={handleSubmit}
-							className="p-2 bg-sky-300 m-8"
-						>
+						<button type="submit" className="p-2 bg-sky-300 m-8">
 							submit
 						</button>
 					</form>
