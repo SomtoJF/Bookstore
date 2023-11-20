@@ -34,7 +34,7 @@ export default function Editbook() {
 		e.preventDefault();
 		setLoading(true);
 		try {
-			const response = await updateBook(id, {
+			await updateBook(id, {
 				title: title,
 				author: author,
 				publishYear: publishYear,
