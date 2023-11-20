@@ -70,7 +70,7 @@ export default function Createbook() {
 							Publish Year
 						</label>
 						<input
-							type="text"
+							type="number"
 							name="publishYear"
 							id="publishYear"
 							value={publishYear}
