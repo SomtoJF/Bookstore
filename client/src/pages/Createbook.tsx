@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import createBook from "../services/books/createBook";
 import Spinner from "../components/Spinner";
+import { useSnackbar } from "notistack";
 
 export default function Createbook() {
 	const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ export default function Createbook() {
 	const [publishYear, setPublishYear] = useState("");
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
@@ -20,9 +22,10 @@ export default function Createbook() {
 				publishYear: publishYear,
 			});
 			setLoading(false);
+			enqueueSnackbar("Book Created Successfully", { variant: "success" });
 			navigate("/");
 		} catch (error: any) {
-			alert("Error creating book. Check your console");
+			enqueueSnackbar("An error occured", { variant: "error" });
 			throw new Error(error);
 		} finally {
 			setLoading(false);

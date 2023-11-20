@@ -2,19 +2,22 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import deleteBook from "../services/books/deleteBook";
 import Spinner from "../components/Spinner";
+import { useSnackbar } from "notistack";
 
 export default function Deletebook() {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
+	const { enqueueSnackbar } = useSnackbar();
 
 	const handleDeleteBook = async () => {
 		try {
 			setLoading(true);
 			await deleteBook(id);
+			enqueueSnackbar("Book Deleted Successfully", { variant: "success" });
 			navigate("/");
 		} catch (err: any) {
-			alert("Something went wrong. Please check console");
+			enqueueSnackbar("An error occured", { variant: "error" });
 			throw new Error(err);
 		}
 		setLoading(false);

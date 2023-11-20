@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import updateBook from "../services/books/updateBook";
 import Spinner from "../components/Spinner";
 import getBook from "../services/books/getBook";
+import { useSnackbar } from "notistack";
 
 export default function Editbook() {
 	const [title, setTitle] = useState("");
@@ -11,6 +12,7 @@ export default function Editbook() {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
+	const { enqueueSnackbar } = useSnackbar();
 
 	useEffect(() => {
 		setLoading(true);
@@ -37,11 +39,11 @@ export default function Editbook() {
 				author: author,
 				publishYear: publishYear,
 			});
-			console.log(response);
 			setLoading(false);
+			enqueueSnackbar("Book Updated Successfully", { variant: "success" });
 			navigate("/");
 		} catch (error: any) {
-			alert("Error updating book. Check your console");
+			enqueueSnackbar("An error occured", { variant: "error" });
 			throw new Error(error);
 		} finally {
 			setLoading(false);
